@@ -15,8 +15,31 @@ import {
   IntervalsContainer,
 } from './styles'
 import { ArrowRight } from 'phosphor-react'
+import { useForm } from 'react-hook-form'Initial used zod ,useForm
+import { z } from 'zod'
+
+const timeIntervalsFormSchema = z.object({})
 
 export default function TimeIntervals() {
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting, errors },
+  } = useForm({
+    defaultValues: {
+      intervals: [
+        { weekDay: 0, enable: false, startTime: '08:00', endTime: '18:00' },
+        { weekDay: 1, enable: false, startTime: '08:00', endTime: '18:00' },
+        { weekDay: 2, enable: false, startTime: '08:00', endTime: '18:00' },
+        { weekDay: 3, enable: false, startTime: '08:00', endTime: '18:00' },
+        { weekDay: 4, enable: false, startTime: '08:00', endTime: '18:00' },
+        { weekDay: 6, enable: false, startTime: '08:00', endTime: '18:00' },
+      ],
+    },
+  })
+
+  async function handleSetTimeIntervals() {}
+
   return (
     <Container>
       <Header>
@@ -28,7 +51,7 @@ export default function TimeIntervals() {
         <MultiStep size={4} currentStep={3} />
       </Header>
 
-      <IntervalBox as="form">
+      <IntervalBox as="form" onSubmit={handleSubmit(handleSetTimeIntervals)}>
         <IntervalsContainer>
           <IntervalItem>
             <IntervalDay>
