@@ -12,6 +12,10 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Container, Header } from '../styles'
+import { useSession } from 'next-auth/react'
+import { GetServerSideProps } from 'next'
+import { getServerSession } from 'next-auth'
+import { buildNextAuthOptions } from '@/pages/api/auth/[...nextauth].api'
 
 const updateProfileShema = z.object({
   bio: z.string(),
@@ -27,6 +31,10 @@ export default function UpdateProfile() {
   } = useForm<UpdateProfileData>({
     resolver: zodResolver(updateProfileShema),
   })
+
+  const session = useSession()
+
+  console.log(session)
 
   async function handleUpdateProfile(data: UpdateProfileData) {}
 
@@ -59,4 +67,18 @@ export default function UpdateProfile() {
       </ProfileBox>
     </Container>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await getServerSession(
+    req,
+    res,
+    buildNextAuthOptions(req, res),
+  )
+
+  return {
+    props: {
+      session,
+    },
+  }
 }
