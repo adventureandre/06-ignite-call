@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import dayjs from 'dayjs'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { prisma } from '../../../../lib/prisma'
@@ -48,6 +49,7 @@ export default async function handler(
   const { time_start_in_minutes, time_end_in_minutes } = userAvailability
 
   const startHour = time_start_in_minutes / 60
+
   const endHour = time_end_in_minutes / 60
 
   const possibleTimes = Array.from({ length: endHour - startHour }).map(
