@@ -1,4 +1,4 @@
-import { Button, Heading, MultiStep, Text, TextInput } from '@advfw-ui/react'
+import { Button, Heading, MultiStep, Text } from '@advfw-ui/react'
 import { Container, Header } from '../styles'
 import { ArrowRight, Check } from 'phosphor-react'
 import { AuthError, ConnectBox, ConnectItem } from './style'
