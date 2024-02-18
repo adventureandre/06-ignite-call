@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@advfw-ui/react": "^2.0.4",
+    "@advfw-ui/react": "^2.0.5",
     "@hookform/resolvers": "^3.3.3",
     "@prisma/client": "^5.7.1",
     "@tanstack/react-query": "^5.20.1",
