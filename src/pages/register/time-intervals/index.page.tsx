@@ -117,7 +117,7 @@ export default function TimeIntervals() {
           <Heading as="strong">Quase lá</Heading>
           <Text>
             Defina o intervalo de horário que você está disponível em cada dia
-            da semana.
+            da semana!
           </Text>
 
           <MultiStep size={4} currentStep={3} />
